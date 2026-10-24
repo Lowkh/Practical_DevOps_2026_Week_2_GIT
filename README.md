@@ -1,4 +1,3 @@
-````markdown
 # Git and GitHub Team Practical
 
 > A practical introduction to version control and group collaboration for students with no prior Git experience.
@@ -35,7 +34,7 @@ No programming experience is required. You will work with Markdown files: plain-
 16. [Individual completion checklist](#16-individual-completion-checklist)
 17. [Optional extension activities](#17-optional-extension-activities)
 
----
+***
 
 ## 1. Learning outcomes
 
@@ -64,7 +63,7 @@ Use Git Bash on Windows, or Terminal on macOS or Linux.
 > [!IMPORTANT]
 > Run Git commands from inside your cloned repository unless instructed otherwise. Before making changes, check your current branch and working directory.
 
----
+***
 
 ## 2. Understand the workflow
 
@@ -121,7 +120,7 @@ Saving a file does not create a commit. Committing does not upload your work. Pu
 > [!WARNING]
 > Do not force-push, use `git reset --hard` or delete the repository to get past an error. Preserve your work and ask for help. Never include passwords or access tokens in project files.
 
----
+***
 
 ## 3. Prepare your group and computers
 
@@ -181,7 +180,7 @@ Complete the authentication setup needed to push changes before continuing.
 - [ ] Everyone has completed authentication setup.
 - [ ] Everyone knows their member number, responsibility and reviewer.
 
----
+***
 
 ## 4. Create and clone the repository
 
@@ -212,7 +211,7 @@ On GitHub:
 Open your terminal in the folder where you normally keep projects. Use your group’s actual address:
 
 ```bash
-git clone [https://github.com/OWNER/campus-connect.git](https://github.com/OWNER/campus-connect.git)
+git clone https://github.com/OWNER/campus-connect.git
 cd campus-connect
 ```
 
@@ -251,7 +250,7 @@ Discuss with another member:
 2. Where is the remote repository?
 3. Does cloning create another repository on GitHub?
 
----
+***
 
 ## 5. Create the starting files
 
@@ -370,7 +369,7 @@ The coordinator must also do this. Merging on GitHub does not automatically upda
 - [ ] Everyone has updated local `main`.
 - [ ] Everyone can open `event.md` and `team.md`.
 
----
+***
 
 ## 6. Prepare your individual contribution
 
@@ -448,7 +447,7 @@ git push -u origin feature/programme
 - [ ] My working directory is clean.
 - [ ] My branch is available on GitHub.
 
----
+***
 
 ## 7. Create a pull request and respond to feedback
 
@@ -510,7 +509,7 @@ git push
 
 Use your actual filename and a suitable message.
 
-The existing PR updates automatically when you push commits to its source branch. Do not create another PR for this response.
+The existing PR updates when you push commits to its source branch. Do not create another PR for this response.
 
 The reviewer checks the update and approves when ready.
 
@@ -524,7 +523,7 @@ The reviewer checks the update and approves when ready.
 - [ ] Everyone has made an improvement following review.
 - [ ] All PRs are ready for integration.
 
----
+***
 
 ## 8. Combine the group contributions
 
@@ -600,7 +599,7 @@ Explain to another member:
 2. What did `merge` do?
 3. Why did everyone still need to pull after the GitHub merges?
 
----
+***
 
 ## 9. Set up a merge conflict
 
@@ -696,7 +695,7 @@ Create a PR, obtain review and merge it.
 
 Do not merge the personal conflict PRs yet.
 
----
+***
 
 ## 10. Resolve the conflict
 
@@ -827,7 +826,7 @@ git status
 - [ ] Everyone’s local `main` is updated.
 - [ ] Everyone’s working directory is clean.
 
----
+***
 
 ## 11. Inspect your Git history
 
@@ -866,7 +865,7 @@ Explain to another member:
 - How do you know?
 - What decision did your conflict-resolution commit record?
 
----
+***
 
 ## 12. Independent group practice
 
@@ -935,7 +934,7 @@ Your repository should show:
 
 Use this evidence in your retrospective and demonstration.
 
----
+***
 
 ## 13. Retrospective and submission
 
@@ -979,7 +978,7 @@ Submit:
 
 Make sure your instructor can access the repository.
 
----
+***
 
 ## 14. Demonstration and assessment
 
@@ -1018,7 +1017,7 @@ Include:
 
 More commits or larger PRs do not automatically mean better work. A conflict is not a failure; what matters is how you resolve it.
 
----
+***
 
 ## 15. Troubleshooting and command reference
 
@@ -1079,7 +1078,7 @@ Use your actual branch name. This does not fix an authentication or permission e
 | `git log --oneline` | View compact commit history. |
 | `git show COMMIT_ID` | Inspect a particular commit. |
 
----
+***
 
 ## 16. Individual completion checklist
 
@@ -1107,7 +1106,7 @@ Include your responses in `retrospective.md`:
 3. What mistake did you learn from?
 4. Which Git skill would you like to practise further?
 
----
+***
 
 ## 17. Optional extension activities
 
@@ -1162,7 +1161,7 @@ Without a verbal explanation, identify:
 
 Discuss which feedback to accept and implement the changes through reviewed PRs.
 
----
+***
 
 ## Closing reminder
 
@@ -1172,4 +1171,3 @@ The aim is not to memorise every command. Develop the habit of understanding you
 Check → Update → Branch → Edit → Inspect → Commit
       → Push → Review → Improve → Merge → Synchronise
 ```
-````
