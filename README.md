@@ -1,23 +1,43 @@
 ````markdown
 # Git and GitHub Team Practical
 
-## Plan a Campus Event Together
+> A practical introduction to version control and group collaboration for students with no prior Git experience.
 
-In this practical, your group will prepare a plan for **Campus Connect** while learning to use Git and GitHub.
+Work in groups to prepare an event proposal for **Campus Connect**. Along the way, you will learn to record changes, share your work, review contributions and resolve conflicts.
 
-No programming experience is required. You will work with Markdown files, which are plain-text documents that use simple symbols for headings, lists and tables.
+No programming experience is required. You will work with Markdown files: plain-text documents that use simple symbols for headings, lists and tables.
 
 | Item | Details |
-|---|---|
-| Intended audience | Students with no prior Git experience |
+| --- | --- |
 | Group size | 4–5 students |
 | Guided activities | Approximately 3–4 hours |
 | Independent practice | Approximately 1–2 hours |
-| Tools | Git, GitHub, a terminal and a text editor |
+| Required tools | Git, GitHub, a terminal and a text editor |
+| Final deliverables | Event proposal, contribution evidence and group retrospective |
+
+## Contents
+
+1. [Learning outcomes](#1-learning-outcomes)
+2. [Understand the workflow](#2-understand-the-workflow)
+3. [Prepare your group and computers](#3-prepare-your-group-and-computers)
+4. [Create and clone the repository](#4-create-and-clone-the-repository)
+5. [Create the starting files](#5-create-the-starting-files)
+6. [Prepare your individual contribution](#6-prepare-your-individual-contribution)
+7. [Create a pull request and respond to feedback](#7-create-a-pull-request-and-respond-to-feedback)
+8. [Combine the group contributions](#8-combine-the-group-contributions)
+9. [Set up a merge conflict](#9-set-up-a-merge-conflict)
+10. [Resolve the conflict](#10-resolve-the-conflict)
+11. [Inspect your Git history](#11-inspect-your-git-history)
+12. [Independent group practice](#12-independent-group-practice)
+13. [Retrospective and submission](#13-retrospective-and-submission)
+14. [Demonstration and assessment](#14-demonstration-and-assessment)
+15. [Troubleshooting and command reference](#15-troubleshooting-and-command-reference)
+16. [Individual completion checklist](#16-individual-completion-checklist)
+17. [Optional extension activities](#17-optional-extension-activities)
 
 ---
 
-## 1. Learning Outcomes
+## 1. Learning outcomes
 
 By the end of this practical, you should be able to:
 
@@ -31,29 +51,28 @@ By the end of this practical, you should be able to:
 - Use Git history to explain your contributions.
 - Coordinate changes with your group.
 
-### How to use this practical
+### Working through this practical
 
 1. Complete the activities in sequence.
 2. Enter commands in the terminal, not in your document.
 3. Replace example names, addresses and filenames with your own.
 4. Read the explanation before running each set of commands.
-5. At each group checkpoint, wait until all members are ready before continuing.
+5. Wait for all members at each group checkpoint.
 
 Use Git Bash on Windows, or Terminal on macOS or Linux.
 
-Run Git commands from inside your cloned repository unless instructed otherwise.
-
-Before making changes, check your current branch and working directory.
+> [!IMPORTANT]
+> Run Git commands from inside your cloned repository unless instructed otherwise. Before making changes, check your current branch and working directory.
 
 ---
 
-## 2. Understand the Workflow
+## 2. Understand the workflow
 
 ### Git and GitHub
 
 Git records changes to your project.
 
-GitHub stores the shared repository online and provides tools for collaboration, such as pull requests and reviews.
+GitHub hosts the shared repository and provides tools for collaboration, including pull requests and reviews.
 
 Your group will have:
 
@@ -63,29 +82,29 @@ Your group will have:
 ### Key terms
 
 | Term | Meaning |
-|---|---|
+| --- | --- |
 | Repository | Your project files and their Git history. |
 | Clone | Create a local copy of an existing repository. |
 | Branch | A separate line of work within the repository. |
 | `main` | The branch containing the group’s agreed version of the project. |
-| Working directory | The project files currently available for you to edit. |
+| Working directory | The project files currently available for editing. |
 | Staging area | Changes selected for the next commit. |
 | Commit | A recorded snapshot of selected changes. |
 | Push | Send local commits to the remote repository. |
-| Fetch | Download remote updates without combining them with your current branch. |
-| Pull | Download updates and combine them with your current branch. |
+| Fetch | Download remote updates without integrating them into your current branch. |
+| Pull | Download updates and integrate them into your current branch. |
 | Merge | Combine another branch’s changes with your current branch. |
 | Pull request, or PR | A proposal on GitHub to merge one branch into another. |
 | Merge conflict | Competing changes that require someone to decide the final content. |
 | `origin` | The remote name normally created when you clone a repository. |
 
-### Saving, committing and sharing are different
+### Saving, committing and sharing
 
 ```text
-Save   → Write your changes to a file.
-Commit → Record selected changes in your local repository.
+Save   → Write changes to a file.
+Commit → Record selected changes locally.
 Push   → Send local commits to GitHub.
-PR     → Propose merging your branch into another branch.
+PR     → Propose merging one branch into another.
 ```
 
 Saving a file does not create a commit. Committing does not upload your work. Pushing a feature branch does not merge it into `main`.
@@ -93,23 +112,23 @@ Saving a file does not create a commit. Committing does not upload your work. Pu
 ### Group working rules
 
 - Work on your own branch, not directly on `main`.
-- Keep each commit focused and use a clear commit message.
-- Ask another member to review your PR.
+- Keep commits focused and use clear commit messages.
+- Ask another member to review each PR.
 - Merge PRs one at a time.
-- Make sure there are no uncommitted changes before switching branches or starting a merge.
-- Do not force-push or use `git reset --hard`.
-- Do not delete the repository just to get past an error.
-- Do not include passwords or access tokens in project files.
+- Start branch switches and merges with no uncommitted changes.
 - Keep these practical instructions in `README.md`.
+
+> [!WARNING]
+> Do not force-push, use `git reset --hard` or delete the repository to get past an error. Preserve your work and ask for help. Never include passwords or access tokens in project files.
 
 ---
 
-## 3. Prepare Your Group and Computers
+## 3. Prepare your group and computers
 
-### Activity 3A — Assign member numbers and responsibilities
+### 3.1 Assign responsibilities
 
 | Member | Initial responsibility | File | Reviewer |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | 1 | Overview and initial coordination | `overview.md` | Member 5, or Member 4 for a group of four |
 | 2 | Programme | `programme.md` | Member 1 |
 | 3 | Publicity | `publicity.md` | Member 2 |
@@ -118,23 +137,23 @@ Saving a file does not create a commit. Committing does not upload your work. Pu
 
 For a group of four, include the budget in `logistics.md`.
 
-These are your starting responsibilities. You will also review and improve documents prepared by other members.
+These are starting responsibilities. You will also review and improve documents prepared by other members.
 
 Each member must use their own computer and GitHub account.
 
-### Activity 3B — Check that Git is installed
+### 3.2 Check that Git is installed
 
-Open your terminal and run:
+Open your terminal:
 
 ```bash
 git --version
 ```
 
-You should see a Git version number.
+Expected result: a Git version number.
 
 If the command is not recognised, ask your lecturer or instructor to check your installation.
 
-### Activity 3C — Set your commit identity
+### 3.3 Set your commit identity
 
 Replace the example values:
 
@@ -150,40 +169,39 @@ git config --global user.name
 git config --global user.email
 ```
 
-Use an email address associated with your GitHub account, or your GitHub-provided no-reply email address.
+Use an email associated with your GitHub account, or your GitHub-provided no-reply email.
 
 These settings identify the author of future commits. They do not sign you in to GitHub.
 
 Complete the authentication setup needed to push changes before continuing.
 
-### Group checkpoint
+### Checkpoint
 
 - [ ] Everyone has Git, a text editor and a GitHub account.
-- [ ] Everyone has completed the authentication setup.
+- [ ] Everyone has completed authentication setup.
 - [ ] Everyone knows their member number, responsibility and reviewer.
 
 ---
 
-## 4. Create and Clone the Shared Repository
+## 4. Create and clone the repository
 
-### Activity 4A — Coordinator only: create the repository
+### 4.1 Coordinator only: create the shared repository
 
 On GitHub:
 
 1. Create a repository named `campus-connect`.
 2. Select the visibility specified by your instructor.
 3. Add a README when creating the repository.
-4. Check that the default branch is `main`.
-5. Place these practical instructions in `README.md` if they are not already provided.
-6. Invite your group members through the repository’s collaborator settings.
+4. Confirm that the default branch is `main`.
+5. Place these instructions in `README.md`, if not already provided.
+6. Invite your group members through the collaborator settings.
 
 Each member must accept the invitation.
 
-If your instructor has already provided a shared repository, use that repository instead.
+> [!NOTE]
+> If your instructor has provided a shared repository, use it instead. Only one shared repository is needed for the group.
 
-Only one shared repository is needed for the group.
-
-### Activity 4B — Everyone: clone the repository
+### 4.2 Everyone: clone the repository
 
 On GitHub:
 
@@ -191,20 +209,18 @@ On GitHub:
 2. Select HTTPS.
 3. Copy the repository address.
 
-Open the terminal in the folder where you normally keep your projects.
-
-Run the following using your group’s actual repository address:
+Open your terminal in the folder where you normally keep projects. Use your group’s actual address:
 
 ```bash
 git clone [https://github.com/OWNER/campus-connect.git](https://github.com/OWNER/campus-connect.git)
 cd campus-connect
 ```
 
-Do not use `OWNER` unchanged.
+Replace `OWNER`, or paste the address copied from GitHub.
 
 Cloning creates the project folder, downloads its files and history, and normally sets up a remote called `origin`.
 
-### Activity 4C — Check your local repository
+### 4.3 Inspect your local repository
 
 ```bash
 git status
@@ -214,15 +230,15 @@ git log --oneline -5
 ```
 
 | Command | What to check |
-|---|---|
+| --- | --- |
 | `git status` | Your current branch and any uncommitted changes. |
-| `git branch` | Your local branches. The `*` indicates the current branch. |
-| `git remote -v` | The remote repository addresses. |
+| `git branch` | Local branches; `*` indicates the current branch. |
+| `git remote -v` | Remote repository addresses. |
 | `git log --oneline -5` | Up to five recent commits. |
 
 If the output opens in a scrolling view, press `q` to exit.
 
-### Individual checkpoint
+### Checkpoint
 
 - [ ] I am inside the cloned repository.
 - [ ] My current branch is `main`.
@@ -231,17 +247,18 @@ If the output opens in a scrolling view, press `q` to exit.
 
 Discuss with another member:
 
-- Where is your local repository?
-- Where is your remote repository?
-- Does cloning create another repository on GitHub?
+1. Where is your local repository?
+2. Where is the remote repository?
+3. Does cloning create another repository on GitHub?
 
 ---
 
-## 5. Create the Starting Files
+## 5. Create the starting files
 
-The coordinator completes this section first. The other members wait until the setup PR has been merged.
+> [!IMPORTANT]
+> The coordinator completes this section first. Other members wait until the setup PR has been merged.
 
-### Activity 5A — Create a setup branch
+### 5.1 Create a setup branch
 
 ```bash
 git switch main
@@ -249,19 +266,19 @@ git pull --ff-only origin main
 git switch -c setup/event-files
 ```
 
-Explanation:
+| Command | Purpose |
+| --- | --- |
+| `git switch main` | Select local `main`. |
+| `git pull --ff-only origin main` | Update it from GitHub, provided a fast-forward is possible. |
+| `git switch -c setup/event-files` | Create and switch to the setup branch. |
 
-- `git switch main` selects your local `main` branch.
-- `git pull --ff-only origin main` updates it from GitHub.
-- `git switch -c` creates a new branch and switches to it.
+The `--ff-only` option stops the update if Git cannot move the branch forward without combining different histories. If it refuses, ask your instructor for help.
 
-The `--ff-only` option stops the update if Git cannot move the branch forward without combining different histories. If this happens, ask your instructor for help.
+The `/` in the branch name is a naming convention, not a folder.
 
-The `/` in the branch name is a naming convention. It does not create a folder.
+### 5.2 Create `event.md`
 
-### Activity 5B — Create `event.md`
-
-Create the following file in the repository’s main folder:
+Create this file in the repository’s top-level folder:
 
 ```markdown
 # Campus Connect
@@ -281,15 +298,16 @@ The group will add its planning documents during the practical.
 
 Save the file.
 
-Keep the `Organisers` line exactly as shown. You will use it for the conflict-resolution activity.
+> [!IMPORTANT]
+> Keep `Organisers: To be confirmed.` exactly as shown. It is needed for the conflict-resolution activity.
 
-### Activity 5C — Create `team.md`
+### 5.3 Create `team.md`
 
 ```markdown
 # Team
 
 | Member | Name | GitHub username | Responsibility |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | 1 | Name | Username | Overview |
 | 2 | Name | Username | Programme |
 | 3 | Name | Username | Publicity |
@@ -298,7 +316,7 @@ Keep the `Organisers` line exactly as shown. You will use it for the conflict-re
 
 Replace the examples with your group’s details. Add Member 5 if needed.
 
-### Activity 5D — Stage, commit and push
+### 5.4 Stage, commit and push
 
 ```bash
 git status
@@ -313,11 +331,11 @@ Explanation:
 
 - `git add` selects changes for the next commit.
 - `git diff --staged` shows what will be included.
-- `git commit` records the selected changes locally.
+- `git commit` records those changes locally.
 - `git push` sends the commits to GitHub.
-- `-u` sets the upstream branch, so you can normally use `git push` for subsequent updates.
+- `-u` sets the upstream branch for subsequent pushes.
 
-### Activity 5E — Create and merge the setup PR
+### 5.5 Create and merge the setup PR
 
 On GitHub:
 
@@ -326,15 +344,15 @@ On GitHub:
 3. Set base to `main`.
 4. Set compare to `setup/event-files`.
 5. Give the PR a clear title.
-6. Check Files changed.
-7. Ask another member to review the changes.
-8. Merge the PR after review.
+6. Inspect Files changed.
+7. Ask another member to review.
+8. Merge after review.
 
-The base branch receives the changes. The compare branch contains the proposed changes.
+The base branch receives the changes. The compare branch contains the proposal.
 
-Select Create a merge commit if the option is available.
+Select Create a merge commit if available.
 
-### Activity 5F — Everyone: update local `main`
+### 5.6 Everyone: update local `main`
 
 ```bash
 git switch main
@@ -342,11 +360,11 @@ git pull --ff-only origin main
 git status
 ```
 
-Check that `event.md` and `team.md` are now in your local repository.
+Confirm that `event.md` and `team.md` are present locally.
 
-The coordinator must also do this. Merging on GitHub does not automatically update your computer.
+The coordinator must also do this. Merging on GitHub does not automatically update a computer.
 
-### Group checkpoint
+### Checkpoint
 
 - [ ] The setup PR has been reviewed and merged.
 - [ ] Everyone has updated local `main`.
@@ -354,14 +372,14 @@ The coordinator must also do this. Merging on GitHub does not automatically upda
 
 ---
 
-## 6. Prepare Your Individual Contribution
+## 6. Prepare your individual contribution
 
-### Activity 6A — Create your feature branch
+### 6.1 Create your feature branch
 
-After updating `main`, run only the command assigned to you:
+After updating `main`, run only your assigned command:
 
 | Member | Command |
-|---|---|
+| --- | --- |
 | 1 | `git switch -c feature/overview` |
 | 2 | `git switch -c feature/programme` |
 | 3 | `git switch -c feature/publicity` |
@@ -377,18 +395,16 @@ git status
 
 Make sure you are on your feature branch, not `main`.
 
-### Activity 6B — Create your document
+### 6.2 Create your document
 
-Use your assigned filename.
-
-Include:
+Use your assigned filename. Include:
 
 - A suitable heading.
 - At least two sections.
 - At least five useful planning points.
-- One assumption or question for the group to discuss.
+- One assumption or question for group discussion.
 
-For example:
+Example:
 
 ```markdown
 # Programme
@@ -409,7 +425,7 @@ For example:
 
 Prepare your own content. Do not edit `event.md` yet.
 
-### Activity 6C — Commit and push
+### 6.3 Commit and push
 
 The example below is for Member 2. Use your own filename, branch and commit message.
 
@@ -423,9 +439,10 @@ git log --oneline -3
 git push -u origin feature/programme
 ```
 
-A new file is initially untracked and does not appear in the usual `git diff` output. Stage it first, then inspect it with `git diff --staged`.
+> [!TIP]
+> A new file is initially untracked and does not appear in ordinary `git diff` output. Stage it first, then inspect it with `git diff --staged`.
 
-### Individual checkpoint
+### Checkpoint
 
 - [ ] My document has been committed.
 - [ ] My working directory is clean.
@@ -433,9 +450,9 @@ A new file is initially untracked and does not appear in the usual `git diff` ou
 
 ---
 
-## 7. Create a PR and Respond to Feedback
+## 7. Create a pull request and respond to feedback
 
-### Activity 7A — Create your PR
+### 7.1 Create your PR
 
 Use these branch settings:
 
@@ -444,7 +461,7 @@ base: main
 compare: your feature branch
 ```
 
-Give the PR a clear title and use this description:
+Give the PR a clear title and use this description template:
 
 ```markdown
 ## What changed?
@@ -464,7 +481,7 @@ Identify details or assumptions that need attention.
 List decisions that the group still needs to make.
 ```
 
-### Activity 7B — Review another member’s work
+### 7.2 Review another member’s work
 
 Read the PR description and Files changed.
 
@@ -477,13 +494,11 @@ Example:
 
 > The activity sequence is clear. Could you add the estimated duration for each activity so we can check whether the programme fits within the available time?
 
-Do not approve the PR without checking the changes.
+Do not approve without inspecting the changes.
 
-### Activity 7C — Respond to the review
+### 7.3 Respond to the review
 
-Make the improvement on the same feature branch.
-
-Save the file, then run:
+Make the improvement on the same feature branch. Save the file, then run:
 
 ```bash
 git diff
@@ -495,13 +510,14 @@ git push
 
 Use your actual filename and a suitable message.
 
-The existing PR will be updated. Do not create another PR for this change.
+The existing PR updates automatically when you push commits to its source branch. Do not create another PR for this response.
 
-The reviewer checks the update and approves it when ready.
+The reviewer checks the update and approves when ready.
 
-Do not merge the individual PRs yet.
+> [!IMPORTANT]
+> Do not merge the individual PRs yet. Integration starts in the next section.
 
-### Group checkpoint
+### Checkpoint
 
 - [ ] Everyone has created a PR.
 - [ ] Everyone has reviewed another member’s work.
@@ -510,17 +526,17 @@ Do not merge the individual PRs yet.
 
 ---
 
-## 8. Combine the Group’s Contributions
+## 8. Combine the group contributions
 
-### Activity 8A — Merge Member 1’s PR first
+### 8.1 Merge Member 1’s PR first
 
 After review, another member merges Member 1’s PR on GitHub.
 
-Everyone waits until this is done.
+Everyone waits until this is complete.
 
-### Activity 8B — Member 2: update your feature branch
+### 8.2 Member 2: update your feature branch
 
-Stay on your feature branch and make sure there are no uncommitted changes.
+Stay on your feature branch. Start with no uncommitted changes.
 
 ```bash
 git status
@@ -533,36 +549,36 @@ git push
 
 Explanation:
 
-- `fetch` downloads the latest remote updates.
-- `origin/main` is your local record of the remote `main`, refreshed by fetching.
-- `merge` combines that version with your current branch.
-- `--no-edit` accepts the generated merge message if needed.
+- `fetch` downloads remote updates.
+- `origin/main` is your local record of remote `main`, refreshed by fetching.
+- `merge` integrates that version into your current branch.
+- `--no-edit` accepts the generated merge message if required.
 
 ```text
-Direction of the merge:
+Merge direction:
 
 origin/main → feature/programme
 ```
 
 This does not merge your feature branch into `main`.
 
-As the initial contributions are in separate files, they should combine without a conflict.
+The initial contributions use separate files, so they should combine without a conflict.
 
 The reviewer checks the updated PR and merges it.
 
-### Activity 8C — Continue in member-number order
+### 8.3 Continue in member-number order
 
 Members 3, 4 and 5 take turns:
 
 1. Wait for the previous PR to be merged.
 2. Fetch the latest changes.
 3. Merge `origin/main` into your feature branch.
-4. Check the result and push.
+4. Inspect the result and push.
 5. Obtain review and merge the PR.
 
-Member 1 will practise command-line merging in the next activity.
+Member 1 will practise command-line merging during the conflict activity.
 
-### Activity 8D — Everyone: update local `main`
+### 8.4 Everyone: update local `main`
 
 ```bash
 git switch main
@@ -570,10 +586,10 @@ git pull --ff-only origin main
 git status
 ```
 
-### Group checkpoint
+### Checkpoint
 
 - [ ] All contribution PRs have been merged.
-- [ ] Everyone has all the planning documents locally.
+- [ ] Everyone has all planning documents locally.
 - [ ] Everyone’s working directory is clean.
 
 ### Discussion
@@ -582,15 +598,15 @@ Explain to another member:
 
 1. What did `fetch` do?
 2. What did `merge` do?
-3. Why did everyone still need to pull after the PRs were merged on GitHub?
+3. Why did everyone still need to pull after the GitHub merges?
 
 ---
 
-## 9. Set Up a Merge Conflict
+## 9. Set up a merge conflict
 
-Each member must resolve a conflict personally. Follow the sequence carefully.
+Each member must resolve a conflict personally.
 
-### Activity 9A — Start from the same version
+### 9.1 Start from the same version
 
 Everyone runs:
 
@@ -600,17 +616,16 @@ git pull --ff-only origin main
 git status
 ```
 
-Check that `event.md` still contains:
+Confirm that `event.md` still contains:
 
 ```text
 Organisers: To be confirmed.
 ```
 
-Wait until everyone reaches this point.
+> [!IMPORTANT]
+> Wait until everyone reaches this point. Do not merge any other changes yet.
 
-Do not merge any other changes yet.
-
-### Activity 9B — Create your conflict branch
+### 9.2 Create your conflict branch
 
 Use your own member number:
 
@@ -618,7 +633,7 @@ Use your own member number:
 git switch -c conflict/member-1
 ```
 
-The other members use `conflict/member-2`, `conflict/member-3` and so on.
+Other members use `conflict/member-2`, `conflict/member-3` and so on.
 
 Replace the organiser line with your own entry.
 
@@ -646,14 +661,14 @@ Create a PR into `main`. Do not merge it.
 
 ### Group checkpoint — wait here
 
-- [ ] Everyone has created their conflict branch.
+- [ ] Everyone has created a conflict branch.
 - [ ] Everyone has committed a different replacement for the same line.
 - [ ] Everyone has pushed and created a PR.
 - [ ] None of these PRs has been merged.
 
-The coordinator continues only after all members have reached this checkpoint.
+The coordinator continues only after all members reach this checkpoint.
 
-### Activity 9C — Coordinator: update the shared version
+### 9.3 Coordinator: update the shared version
 
 Your personal conflict work has already been committed. Create a separate branch:
 
@@ -683,13 +698,12 @@ Do not merge the personal conflict PRs yet.
 
 ---
 
-## 10. Resolve the Conflict
+## 10. Resolve the conflict
 
-Proceed in member-number order.
+> [!IMPORTANT]
+> Proceed in member-number order. Each member waits until the previous member’s resolved PR has been reviewed and merged.
 
-Each member waits until the previous member’s resolved PR has been reviewed and merged.
-
-### Activity 10A — Merge the latest shared version
+### 10.1 Merge the latest shared version
 
 Use your own branch name:
 
@@ -700,13 +714,13 @@ git fetch origin
 git merge origin/main --no-edit
 ```
 
-Start only when there are no uncommitted changes.
+Start only with no uncommitted changes.
 
 Git should report a conflict in `event.md` and pause the merge.
 
-Do not run another pull or start another merge.
+Do not pull again or start another merge.
 
-Check:
+Inspect the state:
 
 ```bash
 git status
@@ -714,7 +728,7 @@ git status
 
 Git should identify `event.md` as an unmerged file.
 
-### Activity 10B — Read the conflict markers
+### 10.2 Read the conflict markers
 
 Member 1 should see something similar to:
 
@@ -726,13 +740,13 @@ Organisers: Team coordinator.
 >>>>>>> origin/main
 ```
 
-| Marker | Meaning |
-|---|---|
+| Marker | Meaning in this merge |
+| --- | --- |
 | `<<<<<<< HEAD` | Start of the current branch’s version. |
 | `=======` | Divider between the two versions. |
 | `>>>>>>> origin/main` | End of the incoming version. |
 
-### Activity 10C — Decide the final content
+### 10.3 Decide the final content
 
 Keep everyone already listed on `main`, then add yourself.
 
@@ -748,13 +762,13 @@ After that PR is merged, Member 2 resolves the line to:
 Organisers: Team coordinator, Member 1, Member 2.
 ```
 
-Continue in this order until all members are included.
+Continue until all members are included.
 
-Remove all conflict markers and check the whole file.
+Remove every conflict marker and inspect the whole file.
 
-Do not simply keep your own version if doing so removes another member’s accepted contribution.
+Do not keep only your version if it removes another member’s accepted contribution.
 
-### Activity 10D — Complete the merge
+### 10.4 Complete the merge
 
 Save the file, then run:
 
@@ -775,36 +789,32 @@ Explanation:
 - Committing completes the merge.
 - Pushing updates the existing PR.
 
-The `--check` option can identify conflict markers and whitespace issues, but it cannot tell whether your final content is correct.
+The `--check` option can identify conflict markers and whitespace issues. It cannot determine whether the final content is correct.
 
-### Activity 10E — Review and merge
+### 10.5 Review and merge
 
-The reviewer checks that:
+The reviewer verifies that:
 
 - All conflict markers have been removed.
-- Previously accepted organisers are still listed.
+- Previously accepted organisers remain listed.
 - The current member has been added.
 - No unrelated content has been removed.
 
-Merge the PR.
+Merge the PR. Only then should the next member start Section 10.1.
 
-Only then should the next member start Activity 10A.
+### Cancelling an in-progress merge
 
-### If you need to cancel the merge
-
-To cancel a merge that is still in progress:
+If you need to cancel a merge that is still in progress:
 
 ```bash
 git merge --abort
 ```
 
-Changes made while resolving the conflict may be discarded.
-
-Ask your instructor for help if you are unsure.
+Resolution edits may be discarded. Ask your instructor if you are unsure.
 
 ### Final conflict checkpoint
 
-After all members have completed the activity, everyone runs:
+After everyone has completed the activity:
 
 ```bash
 git switch main
@@ -813,13 +823,13 @@ git status
 ```
 
 - [ ] The organiser line includes everyone.
-- [ ] Each member has personally resolved a conflict.
+- [ ] Every member personally resolved a conflict.
 - [ ] Everyone’s local `main` is updated.
 - [ ] Everyone’s working directory is clean.
 
 ---
 
-## 11. Check Your Git History
+## 11. Inspect your Git history
 
 Run:
 
@@ -828,7 +838,7 @@ git log --oneline --graph --decorate --all -25
 ```
 
 | Option | Purpose |
-|---|---|
+| --- | --- |
 | `--oneline` | Show compact commit summaries. |
 | `--graph` | Draw branch and merge relationships using text. |
 | `--decorate` | Show branch and other reference labels. |
@@ -858,25 +868,25 @@ Explain to another member:
 
 ---
 
-## 12. Independent Group Practice
+## 12. Independent group practice
 
-For this activity, your group decides how to organise the work. No command sequence or branch plan is provided.
+Your group now decides how to organise the work. No command sequence or branch plan is provided.
 
 ### Scenario
 
-Your proposal has been accepted, but the organising committee now requires:
+The organising committee has accepted your initial proposal but now requires:
 
 - A half-day event for 120 students.
-- A replacement venue, as the original venue is unavailable.
+- A replacement venue because the original venue is unavailable.
 - Accessible and inclusive arrangements.
 - Environmentally responsible planning.
 - A total budget not exceeding SGD 800.
 
-Your documents must form one consistent event proposal.
+Your documents must form one consistent proposal.
 
 ### Required outcome
 
-Address the following:
+Address:
 
 - Purpose and target audience.
 - Programme.
@@ -890,7 +900,7 @@ Address the following:
 
 Clearly labelled estimates are acceptable. You do not need to obtain quotations or make bookings.
 
-Update `event.md` to link to the relevant documents. Keep these practical instructions in `README.md`.
+Update `event.md` to link to the relevant documents. Keep these instructions in `README.md`.
 
 ### Collaboration requirements
 
@@ -898,16 +908,16 @@ Update `event.md` to link to the relevant documents. Keep these practical instru
 - Each member improves a document originally prepared by someone else.
 - Every PR receives useful review feedback.
 - At least two branches are developed at the same time.
-- At least one feature branch is updated with another member’s merged work.
+- At least one feature branch incorporates another member’s merged work.
 - The group resolves one additional conflict arising from useful, competing edits.
 - The agreed proposal is merged into `main`.
-- Everyone finishes with an updated local `main` and no uncommitted changes.
+- Everyone finishes with updated local `main` and no uncommitted changes.
 
 Do not make meaningless changes just to create a conflict.
 
-### Additional requirement at the midpoint
+### Midpoint change request
 
-After the first round of revised PRs has been merged:
+After the first round of revised PRs is merged:
 
 > The event must be able to continue indoors if it rains. The budget remains SGD 800, and attendance remains 120 students.
 
@@ -915,32 +925,32 @@ Decide which documents need to change and coordinate the revisions.
 
 ### Evidence to retain
 
-Make sure your repository shows:
+Your repository should show:
 
 - Each member’s contributions.
 - Review comments and responses.
 - Follow-up commits.
 - The additional conflict and its resolution.
-- How shared changes were brought into an ongoing feature branch.
+- Shared changes incorporated into an ongoing feature branch.
 
-You will use this evidence in your retrospective and demonstration.
+Use this evidence in your retrospective and demonstration.
 
 ---
 
-## 13. Reflection and Submission
+## 13. Retrospective and submission
 
 Create `retrospective.md` and submit it through a reviewed PR.
 
-Include the following:
+### Retrospective requirements
 
 | Section | What to include |
-|---|---|
+| --- | --- |
 | Group workflow | How you divided work, used branches, reviewed changes and merged PRs. |
 | Individual contributions | Each member’s PR links, contribution and reviewer. |
-| Review improvement | The original content, feedback and resulting improvement. |
-| Additional conflict | The competing edits, agreed resolution, reason and evidence. |
+| Review improvement | Original content, feedback and resulting improvement. |
+| Additional conflict | Competing edits, agreed resolution, rationale and evidence. |
 | Branch update | An example of bringing shared changes into a feature branch. |
-| Difficulty and recovery | What happened, what you checked and how you recovered. |
+| Difficulty and recovery | What happened, what you inspected and how you recovered. |
 | Midpoint requirement | How the rain contingency affected the plan. |
 | Future improvements | Three specific improvements to your group’s workflow. |
 | Individual reflection | A task completed independently and a skill to practise further. |
@@ -949,18 +959,20 @@ Include the following:
 
 - [ ] All required planning areas are covered.
 - [ ] Figures and decisions are consistent across documents.
-- [ ] The attendance, budget and rain-contingency requirements are met.
+- [ ] Attendance, budget and rain-contingency requirements are met.
 - [ ] Every member has the required PR and review evidence.
 - [ ] No conflict markers remain.
 - [ ] No passwords or access tokens are included.
 - [ ] Final changes and the retrospective have been merged.
 - [ ] Everyone’s local `main` is updated and clean.
 
-### Submit the following
+### Submission requirements
+
+Submit:
 
 1. Shared repository address.
 2. Member names and GitHub usernames.
-3. Link to the final `event.md`.
+3. Link to final `event.md`.
 4. Link to `retrospective.md`.
 5. Link to the additional conflict-resolution PR.
 6. Any incomplete requirements or outstanding issues.
@@ -969,14 +981,12 @@ Make sure your instructor can access the repository.
 
 ---
 
-## 14. Demonstration and Assessment
+## 14. Demonstration and assessment
 
-Prepare an 8–10 minute group demonstration.
-
-Every member must explain and show some of their own work.
+Prepare an 8–10 minute group demonstration. Every member must explain and show some of their own work.
 
 | Segment | Suggested duration |
-|---|---:|
+| --- | --- |
 | Final event plan | 1 minute |
 | Individual contributions | 3 minutes |
 | Improvement following review | 1 minute |
@@ -992,26 +1002,27 @@ Include:
 - Review comments.
 - Follow-up commits.
 - Conflict-resolution evidence.
-- Your current branch and local working state.
+- Current branch and local working state.
 
 ### Assessment criteria
 
 | Criterion | Weight |
-|---|---:|
+| --- | --- |
 | Individual Git participation | 20% |
 | Pull requests and review | 20% |
 | Merging and conflict resolution | 20% |
 | Independent practice outcome | 20% |
 | Evidence and reflection | 10% |
 | Individual understanding | 10% |
+| Total | 100% |
 
 More commits or larger PRs do not automatically mean better work. A conflict is not a failure; what matters is how you resolve it.
 
 ---
 
-## 15. Troubleshooting Reference
+## 15. Troubleshooting and command reference
 
-Before trying a fix:
+### Before attempting a fix
 
 1. Read the error message.
 2. Run `git status`.
@@ -1019,19 +1030,21 @@ Before trying a fix:
 4. Confirm what you intended to do.
 5. Preserve your work before making further changes.
 
+### Common problems
+
 | Problem | What to check first |
-|---|---|
+| --- | --- |
 | “Not a Git repository” | Check your location and enter the cloned project folder. |
-| Local changes would be overwritten | Run `git status` and `git diff`. Preserve your work before continuing. |
-| Changes are missing on GitHub | Check whether you saved, staged, committed and pushed. Also check the branch shown on GitHub. |
-| Push is rejected | Read the error. Check access, authentication and whether the remote branch has newer commits. Do not force-push. |
-| `pull --ff-only` refuses | Check the history and ask for help. Preserve any local commits. |
-| Unexpected files appear in a PR | Check the base branch, compare branch and branch history. |
-| A conflict is still unresolved | Check every unmerged file, agree on the final content, remove markers, stage and commit. |
+| Local changes would be overwritten | Inspect `git status` and `git diff`. Preserve your work before continuing. |
+| Changes missing on GitHub | Check saving, staging, committing, pushing and the branch displayed on GitHub. |
+| Push rejected | Check access, authentication and whether the remote branch has newer commits. Do not force-push. |
+| `pull --ff-only` refuses | Inspect history and ask for help. Preserve local commits. |
+| Unexpected files in a PR | Check base, compare and branch history. |
+| Unresolved conflict | Inspect every unmerged file, agree final content, remove markers, stage and commit. |
 
-### If your remote feature branch has newer commits
+### Remote feature branch has newer commits
 
-If someone has pushed commits to the same feature branch, you may need to fetch and merge that matching branch before pushing.
+If someone has pushed commits to the same feature branch, fetch and integrate that matching branch before pushing.
 
 For example, while on `feature/programme`:
 
@@ -1042,37 +1055,37 @@ git merge origin/feature/programme --no-edit
 
 Resolve any conflict, complete the merge if needed, then push.
 
-Use your actual branch name. Do not use this as a fix for an authentication or permission error.
+Use your actual branch name. This does not fix an authentication or permission error.
 
-### Common commands
+### Command reference
 
 | Command | Purpose |
-|---|---|
+| --- | --- |
 | `git clone URL` | Create a local copy of an existing repository. |
-| `git status` | Check your branch and working state. |
-| `git branch --show-current` | Show the current branch name. |
+| `git status` | Inspect your branch and working state. |
+| `git branch --show-current` | Show the current branch. |
 | `git switch main` | Switch to local `main`. |
 | `git switch -c feature/name` | Create and switch to a branch. |
-| `git diff` | Check unstaged changes to tracked files. |
+| `git diff` | Inspect unstaged changes to tracked files. |
 | `git add FILE` | Stage a file’s changes. |
-| `git diff --staged` | Check changes selected for the next commit. |
+| `git diff --staged` | Inspect changes selected for the next commit. |
 | `git commit -m "Message"` | Record staged changes locally. |
 | `git push -u origin BRANCH` | Publish a branch and set its upstream. |
 | `git push` | Push to the configured upstream. |
 | `git fetch origin` | Download remote updates without integrating them. |
-| `git pull --ff-only origin main` | Update local `main` when a fast-forward is possible. Use while on `main` in this practical. |
-| `git merge origin/main --no-edit` | Bring the fetched remote `main` into your current branch. |
-| `git merge --abort` | Cancel a merge that is still in progress. |
+| `git pull --ff-only origin main` | Update local `main` if a fast-forward is possible; use while on `main` in this practical. |
+| `git merge origin/main --no-edit` | Integrate fetched remote `main` into your current branch. |
+| `git merge --abort` | Cancel an in-progress merge. |
 | `git log --oneline` | View compact commit history. |
 | `git show COMMIT_ID` | Inspect a particular commit. |
 
 ---
 
-## 16. Individual Completion Checklist
+## 16. Individual completion checklist
 
 - [ ] I cloned the shared repository.
 - [ ] I created and switched to my own branch.
-- [ ] I checked changes before committing.
+- [ ] I inspected changes before committing.
 - [ ] I staged and committed my own work.
 - [ ] I pushed my branch to GitHub.
 - [ ] I created a PR.
@@ -1082,7 +1095,7 @@ Use your actual branch name. Do not use this as a fix for an authentication or p
 - [ ] I merged shared changes into a feature branch.
 - [ ] I personally resolved and committed a conflict.
 - [ ] I can find and explain one of my commits.
-- [ ] I contributed to the independent group practice.
+- [ ] I contributed to the independent practice.
 - [ ] My local `main` is updated and my working directory is clean.
 
 ### Individual reflection
@@ -1096,22 +1109,22 @@ Include your responses in `retrospective.md`:
 
 ---
 
-## 17. Optional Extension Activities
+## 17. Optional extension activities
 
-Attempt these only after completing the required work.
+Attempt these after completing the required work.
 
 ### A. Improve the handover
 
-A new committee member has five minutes to understand your plan.
+A new committee member has five minutes to understand the plan.
 
-Improve navigation so they can find:
+Improve navigation to:
 
-- The event summary.
-- The programme.
-- The budget.
+- Event summary.
+- Programme.
+- Budget.
 - Contingency arrangements.
 - Outstanding decisions.
-- The member responsible for each planning area.
+- Member responsible for each planning area.
 
 Ask another group to find all six without your help.
 
@@ -1123,17 +1136,13 @@ Prepare a realistic but incomplete improvement, such as:
 - A budget missing an expense.
 - A publicity plan without registration details.
 
-Submit it as a PR.
-
-The reviewer identifies the issue and its consequence. The author improves the proposal before it is merged.
+Submit it as a PR. The reviewer identifies the issue and its consequence. The author improves the proposal before merging.
 
 ### C. Coordinate overlapping work
 
 Two members independently improve the same section with useful but different proposals.
 
-Produce one consistent final version.
-
-Explain:
+Produce one consistent final version and explain:
 
 - What each member intended.
 - Where the proposals overlapped.
@@ -1142,7 +1151,7 @@ Explain:
 
 ### D. Review another group’s repository
 
-Exchange repository links with another group.
+Exchange repository links.
 
 Without a verbal explanation, identify:
 
@@ -1155,9 +1164,9 @@ Discuss which feedback to accept and implement the changes through reviewed PRs.
 
 ---
 
-## Closing Reminder
+## Closing reminder
 
-The aim is not to memorise every command. Develop the habit of understanding your current state, making focused changes, checking the result and sharing work carefully.
+The aim is not to memorise every command. Develop the habit of understanding your current state, making focused changes, inspecting the result and sharing work carefully.
 
 ```text
 Check → Update → Branch → Edit → Inspect → Commit
