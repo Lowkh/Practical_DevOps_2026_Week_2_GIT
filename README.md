@@ -1,6 +1,18 @@
+Below is the complete updated Markdown document, including the public-repository requirement, tutor collaborator requirement, and educational disclaimer. Public repositories are accessible online, while collaborators must accept invitations before obtaining repository access. [docs.github](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/repository-access-and-collaboration)
+
+```markdown
 # Git and GitHub Team Practical
 
 > A practical introduction to version control and group collaboration for students with no prior Git experience.
+
+> [!NOTE]
+> ## Educational Practice Repository
+>
+> This public repository has been created solely for an introductory Git and GitHub collaboration practical. Its purpose is to help students practise version control, branching, pull requests, code review, merging and conflict resolution.
+>
+> All event plans, names, roles, dates, venues, budgets, organisations and other content included in this repository are fictional and prepared for educational purposes only. Any resemblance to actual persons, organisations, events or circumstances is purely coincidental.
+>
+> Do not include confidential, personal, sensitive, commercially sensitive or copyrighted material in this repository. This includes passwords, access tokens, API keys, identification numbers, personal contact details and private photographs.
 
 Work in groups to prepare an event proposal for **Campus Connect**. Along the way, you will learn to record changes, share your work, review contributions and resolve conflicts.
 
@@ -75,8 +87,11 @@ GitHub hosts the shared repository and provides tools for collaboration, includi
 
 Your group will have:
 
-- One shared remote repository on GitHub.
+- One shared public remote repository on GitHub.
 - One local repository on each member’s computer.
+
+> [!WARNING]
+> A public GitHub repository can be viewed by anyone on the internet. Never commit passwords, access tokens, API keys, personal contact details, confidential information, private images or copyrighted material.
 
 ### Key terms
 
@@ -116,6 +131,8 @@ Saving a file does not create a commit. Committing does not upload your work. Pu
 - Merge PRs one at a time.
 - Start branch switches and merges with no uncommitted changes.
 - Keep these practical instructions in `README.md`.
+- Use fictional information only for the Campus Connect proposal.
+- Do not add confidential, personal, sensitive, commercially sensitive or copyrighted content.
 
 > [!WARNING]
 > Do not force-push, use `git reset --hard` or delete the repository to get past an error. Preserve your work and ask for help. Never include passwords or access tokens in project files.
@@ -179,6 +196,7 @@ Complete the authentication setup needed to push changes before continuing.
 - [ ] Everyone has Git, a text editor and a GitHub account.
 - [ ] Everyone has completed authentication setup.
 - [ ] Everyone knows their member number, responsibility and reviewer.
+- [ ] Everyone understands that only fictional, non-sensitive information may be committed.
 
 ***
 
@@ -189,16 +207,22 @@ Complete the authentication setup needed to push changes before continuing.
 On GitHub:
 
 1. Create a repository named `campus-connect`.
-2. Select the visibility specified by your instructor.
+2. Set the repository visibility to **Public**.
 3. Add a README when creating the repository.
 4. Confirm that the default branch is `main`.
-5. Place these instructions in `README.md`, if not already provided.
+5. Place these instructions in `README.md`, including the **Educational Practice Repository** disclaimer at the top.
 6. Invite your group members through the collaborator settings.
+7. Add your class tutor as a repository collaborator using the GitHub username provided by your tutor.
+8. Confirm that all group members and the tutor have accepted their invitations.
 
-Each member must accept the invitation.
+> [!IMPORTANT]
+> This repository must be public. Public repositories are accessible to anyone on the internet, so only fictional and non-sensitive content may be included.
 
 > [!NOTE]
-> If your instructor has provided a shared repository, use it instead. Only one shared repository is needed for the group.
+> To add group members or your tutor as collaborators, open the repository’s **Settings**, select **Collaborators** under **Access**, choose **Add people**, then search for the person’s GitHub username and send the invitation.
+
+> [!NOTE]
+> If your instructor has provided a shared repository, use it instead. Only one shared repository is needed for the group. Confirm that it is public and that the class tutor has collaborator access.
 
 ### 4.2 Everyone: clone the repository
 
@@ -211,7 +235,7 @@ On GitHub:
 Open your terminal in the folder where you normally keep projects. Use your group’s actual address:
 
 ```bash
-git clone https://github.com/OWNER/campus-connect.git
+git clone [https://github.com/OWNER/campus-connect.git](https://github.com/OWNER/campus-connect.git)
 cd campus-connect
 ```
 
@@ -239,6 +263,10 @@ If the output opens in a scrolling view, press `q` to exit.
 
 ### Checkpoint
 
+- [ ] The repository visibility is **Public**.
+- [ ] Group members have been invited and have accepted access.
+- [ ] The class tutor has been invited as a collaborator using the GitHub ID provided.
+- [ ] The educational-practice disclaimer is visible in `README.md`.
 - [ ] I am inside the cloned repository.
 - [ ] My current branch is `main`.
 - [ ] My working directory is clean.
@@ -314,6 +342,9 @@ Save the file.
 ```
 
 Replace the examples with your group’s details. Add Member 5 if needed.
+
+> [!NOTE]
+> Use first names or agreed non-sensitive identifiers only. Do not include personal email addresses, phone numbers, student numbers or other private details in this public repository.
 
 ### 5.4 Stage, commit and push
 
@@ -422,7 +453,7 @@ Example:
 - How many students are expected?
 ```
 
-Prepare your own content. Do not edit `event.md` yet.
+Prepare your own fictional content. Do not edit `event.md` yet.
 
 ### 6.3 Commit and push
 
@@ -446,6 +477,7 @@ git push -u origin feature/programme
 - [ ] My document has been committed.
 - [ ] My working directory is clean.
 - [ ] My branch is available on GitHub.
+- [ ] My document contains fictional, non-sensitive information only.
 
 ***
 
@@ -961,7 +993,8 @@ Create `retrospective.md` and submit it through a reviewed PR.
 - [ ] Attendance, budget and rain-contingency requirements are met.
 - [ ] Every member has the required PR and review evidence.
 - [ ] No conflict markers remain.
-- [ ] No passwords or access tokens are included.
+- [ ] No passwords, access tokens, personal contact details or sensitive information are included.
+- [ ] All proposal content is fictional and suitable for a public repository.
 - [ ] Final changes and the retrospective have been merged.
 - [ ] Everyone’s local `main` is updated and clean.
 
@@ -1040,6 +1073,7 @@ More commits or larger PRs do not automatically mean better work. A conflict is 
 | `pull --ff-only` refuses | Inspect history and ask for help. Preserve local commits. |
 | Unexpected files in a PR | Check base, compare and branch history. |
 | Unresolved conflict | Inspect every unmerged file, agree final content, remove markers, stage and commit. |
+| Sensitive information committed | Stop sharing the material, inform the tutor immediately and follow the tutor’s instructions. Do not assume that deleting the file removes it from Git history. |
 
 ### Remote feature branch has newer commits
 
@@ -1095,6 +1129,7 @@ Use your actual branch name. This does not fix an authentication or permission e
 - [ ] I personally resolved and committed a conflict.
 - [ ] I can find and explain one of my commits.
 - [ ] I contributed to the independent practice.
+- [ ] I confirmed that I did not commit confidential, personal or sensitive information.
 - [ ] My local `main` is updated and my working directory is clean.
 
 ### Individual reflection
@@ -1170,4 +1205,5 @@ The aim is not to memorise every command. Develop the habit of understanding you
 ```text
 Check → Update → Branch → Edit → Inspect → Commit
       → Push → Review → Improve → Merge → Synchronise
+```
 ```
