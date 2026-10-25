@@ -78,36 +78,50 @@ Use Git Bash on Windows, or Terminal on macOS or Linux.
 
 ### Git and GitHub
 
-Git records changes to your project.
+Git records changes to your project files.
 
-GitHub hosts the shared repository and provides tools for collaboration, including pull requests and reviews.
+GitHub hosts the shared repository online and provides collaboration tools, including pull requests and reviews.
 
 Your group will have:
 
-- One shared public remote repository on GitHub.
+- One shared public repository on GitHub.
 - One local repository on each member’s computer.
 
 > [!WARNING]
 > A public GitHub repository can be viewed by anyone on the internet. Never commit passwords, access tokens, API keys, personal contact details, confidential information, private images or copyrighted material.
 
+### A simple mental model
+
+Think of GitHub as the group’s shared online folder with a change history.
+
+Think of your local repository as your own copy of that folder on your computer.
+
+A branch is like making a separate line of work so that you can edit safely without changing the agreed group version in `main`.
+
 ### Key terms
 
 | Term | Meaning |
 | --- | --- |
-| Repository | Your project files and their Git history. |
-| Clone | Create a local copy of an existing repository. |
+| Repository | A project folder and its recorded change history. |
+| Shared repository | The group’s repository on GitHub. It is also called the remote repository. |
+| Local repository | Your own project folder and Git history on your computer. |
+| Clone | Create a local copy of an existing shared repository. |
 | Branch | A separate line of work within the repository. |
-| `main` | The branch containing the group’s agreed version of the project. |
-| Working directory | The project files currently available for editing. |
-| Staging area | Changes selected for the next commit. |
+| `main` | The shared branch containing the group’s agreed version of the project. |
+| Personal work branch | Your own branch for making changes safely. It is also called a feature branch. |
+| Current branch | The branch you are currently working on. New changes and commits are made here. |
+| Working directory | The project files on your computer that you can edit. |
+| Staging area | A selection area where you choose changes for your next commit. It is not a separate folder. |
 | Commit | A recorded snapshot of selected changes. |
-| Push | Send local commits to the remote repository. |
-| Fetch | Download remote updates without integrating them into your current branch. |
-| Pull | Download updates and integrate them into your current branch. |
-| Merge | Combine another branch’s changes with your current branch. |
-| Pull request, or PR | A proposal on GitHub to merge one branch into another. |
-| Merge conflict | Competing changes that require someone to decide the final content. |
-| `origin` | The remote name normally created when you clone a repository. |
+| Push | Send your local commits to GitHub. |
+| Fetch | Download information about updates on GitHub without changing your current files. |
+| Pull | Download GitHub updates and integrate them into your current branch. |
+| Merge | Combine changes from one branch into another branch. |
+| Pull request, or PR | A request on GitHub to review and merge changes from one branch into another. |
+| Merge conflict | Competing changes that require a person to decide the final content. |
+| `origin` | The short name Git normally gives to the group’s shared GitHub repository after cloning. |
+| `origin/main` | Your computer’s latest downloaded record of the `main` branch on GitHub. It is refreshed by `git fetch origin`. |
+| Commit ID | A short code that identifies a commit, such as `a1b2c3d`. |
 
 ### Saving, committing and sharing
 
@@ -118,11 +132,11 @@ Push   → Send local commits to GitHub.
 PR     → Propose merging one branch into another.
 ```
 
-Saving a file does not create a commit. Committing does not upload your work. Pushing a feature branch does not merge it into `main`.
+Saving a file does not create a commit. Committing does not upload your work. Pushing a personal work branch does not merge it into `main`.
 
 ### Group working rules
 
-- Work on your own branch, not directly on `main`.
+- Work on your own personal work branch, not directly on `main`.
 - Keep commits focused and use clear commit messages.
 - Ask another member to review each PR.
 - Merge PRs one at a time.
@@ -132,7 +146,7 @@ Saving a file does not create a commit. Committing does not upload your work. Pu
 - Do not add confidential, personal, sensitive, commercially sensitive or copyrighted content.
 
 > [!WARNING]
-> Do not force-push, use `git reset --hard` or delete the repository to get past an error. Preserve your work and ask for help. Never include passwords or access tokens in project files.
+> Do not force-push, use `git reset --hard` or delete the repository to get past an error. Preserve your work, inspect the situation and ask your Tutor if needed. Never include passwords or access tokens in project files.
 
 ***
 
@@ -225,22 +239,41 @@ On GitHub:
 
 On GitHub:
 
-1. Select Code.
-2. Select HTTPS.
-3. Copy the repository address.
+1. Open your group’s `campus-connect` repository.
+2. Select **Code**.
+3. Select **HTTPS**.
+4. Select the copy icon to copy the repository URL.
 
-Open your terminal in the folder where you normally keep projects. Use your group’s actual address:
+Open Git Bash or Terminal in the folder where you normally keep projects.
+
+Type `git clone`, add one space, then paste the HTTPS URL that you copied from GitHub:
 
 ```bash
-git clone [https://github.com/OWNER/campus-connect.git](https://github.com/OWNER/campus-connect.git)
+git clone PASTE_THE_HTTPS_URL_COPIED_FROM_GITHUB_HERE
+```
+
+For example, after pasting your group’s actual URL, the command will look similar to this:
+
+```bash
+git clone [https://github.com/your-group-owner/campus-connect.git](https://github.com/your-group-owner/campus-connect.git)
+```
+
+Press **Enter**. Git creates a new folder named `campus-connect`.
+
+Enter the new project folder:
+
+```bash
 cd campus-connect
 ```
 
-Replace `OWNER`, or paste the address copied from GitHub.
+> [!IMPORTANT]
+> Do not type `PASTE_THE_HTTPS_URL_COPIED_FROM_GITHUB_HERE` literally. Replace it by pasting the HTTPS URL copied from your group’s GitHub repository.
 
-Cloning creates the project folder, downloads its files and history, and normally sets up a remote called `origin`.
+Cloning creates a new folder, downloads the project files and their history, and normally sets up a remote named `origin`.
 
 ### 4.3 Inspect your local repository
+
+Do not worry if the command output contains unfamiliar information. At this stage, focus only on the checks shown in the table.
 
 ```bash
 git status
@@ -252,9 +285,9 @@ git log --oneline -5
 | Command | What to check |
 | --- | --- |
 | `git status` | Your current branch and any uncommitted changes. |
-| `git branch` | Local branches; `*` indicates the current branch. |
-| `git remote -v` | Remote repository addresses. |
-| `git log --oneline -5` | Up to five recent commits. |
+| `git branch` | Your local branches. The `*` indicates your current branch. |
+| `git remote -v` | Check that `origin` is the short name for your group’s GitHub repository and that the displayed address belongs to your group. |
+| `git log --oneline -5` | Up to five recent commits, shown as short lines. |
 
 If the output opens in a scrolling view, press `q` to exit.
 
@@ -272,7 +305,7 @@ If the output opens in a scrolling view, press `q` to exit.
 Discuss with another member:
 
 1. Where is your local repository?
-2. Where is the remote repository?
+2. Where is the shared repository?
 3. Does cloning create another repository on GitHub?
 
 ***
@@ -292,11 +325,11 @@ git switch -c setup/event-files
 
 | Command | Purpose |
 | --- | --- |
-| `git switch main` | Select local `main`. |
-| `git pull --ff-only origin main` | Update it from GitHub, provided a fast-forward is possible. |
+| `git switch main` | Select your local `main` branch. |
+| `git pull --ff-only origin main` | Safely update local `main` from GitHub. Git stops instead of combining histories if it finds unexpected local commits. |
 | `git switch -c setup/event-files` | Create and switch to the setup branch. |
 
-The `--ff-only` option stops the update if Git cannot move the branch forward without combining different histories. If it refuses, use the troubleshooting steps in Section 15 to inspect and preserve your work before asking your Tutor for help.
+The `--ff-only` option stops the update if Git cannot move the local branch directly forward to match GitHub without combining different histories. If it refuses, use the troubleshooting steps in Section 15 to inspect and preserve your work before asking your Tutor for help.
 
 The `/` in the branch name is a naming convention, not a folder.
 
@@ -331,7 +364,7 @@ Save the file.
 # Team
 
 | Member | Name | GitHub username | Responsibility |
-| --- | --- | --- | --- |
+| --- | --- | --- | ---|
 | 1 | Name | Username | Overview |
 | 2 | Name | Username | Programme |
 | 3 | Name | Username | Publicity |
@@ -356,28 +389,33 @@ git push -u origin setup/event-files
 
 Explanation:
 
-- `git add` selects changes for the next commit.
-- `git diff --staged` shows what will be included.
-- `git commit` records those changes locally.
-- `git push` sends the commits to GitHub.
-- `-u` sets the upstream branch for subsequent pushes.
+- `git add` places selected file changes into the staging area: the changes you want included in your next commit.
+- `git diff --staged` shows exactly what will be included in the next commit.
+- `git commit` records the staged changes in your local repository.
+- `git push` sends your local commits to GitHub.
+- `-u` remembers the matching branch on GitHub, so later you can usually run `git push` without typing the branch name again.
 
 ### 5.5 Create and merge the setup PR
 
 On GitHub:
 
-1. Open Pull requests.
+1. Open **Pull requests**.
 2. Create a new PR.
-3. Set base to `main`.
-4. Set compare to `setup/event-files`.
+3. Set the base branch to `main`.
+4. Set the compare branch to `setup/event-files`.
 5. Give the PR a clear title.
-6. Inspect Files changed.
+6. Inspect **Files changed**.
 7. Ask another member to review.
 8. Merge after review.
 
-The base branch receives the changes. The compare branch contains the proposal.
+Remember:
 
-Select Create a merge commit if available.
+- **Base** is the destination branch that receives the changes: `main`.
+- **Compare** is the branch containing the proposed changes: `setup/event-files`.
+
+The base branch receives the changes when the PR is merged. The compare branch contains the proposal.
+
+Select **Create a merge commit** if available.
 
 ### 5.6 Everyone: update local `main`
 
@@ -389,7 +427,7 @@ git status
 
 Confirm that `event.md` and `team.md` are present locally.
 
-The coordinator must also do this. Merging on GitHub does not automatically update a computer.
+The coordinator must also do this. Merging on GitHub does not automatically update anyone’s computer.
 
 ### Checkpoint
 
@@ -401,7 +439,7 @@ The coordinator must also do this. Merging on GitHub does not automatically upda
 
 ## 6. Prepare your individual contribution
 
-### 6.1 Create your feature branch
+### 6.1 Create your personal work branch
 
 After updating `main`, run only your assigned command:
 
@@ -420,7 +458,7 @@ git branch --show-current
 git status
 ```
 
-Make sure you are on your feature branch, not `main`.
+Make sure you are on your personal work branch, not `main`.
 
 ### 6.2 Create your document
 
@@ -467,7 +505,7 @@ git push -u origin feature/programme
 ```
 
 > [!TIP]
-> A new file is initially untracked and does not appear in ordinary `git diff` output. Stage it first, then inspect it with `git diff --staged`.
+> A new file is initially untracked. This means Git has noticed the file but is not yet tracking it for commits. A new untracked file does not appear in ordinary `git diff` output. Stage it first, then inspect it with `git diff --staged`.
 
 ### Checkpoint
 
@@ -486,8 +524,13 @@ Use these branch settings:
 
 ```text
 base: main
-compare: your feature branch
+compare: your personal work branch
 ```
+
+Remember:
+
+- **Base** is the destination branch that will receive the changes: `main`.
+- **Compare** is your personal work branch containing the proposed changes.
 
 Give the PR a clear title and use this description template:
 
@@ -511,7 +554,7 @@ List decisions that the group still needs to make.
 
 ### 7.2 Review another member’s work
 
-Read the PR description and Files changed.
+Read the PR description and **Files changed**.
 
 Provide:
 
@@ -526,7 +569,7 @@ Do not approve without inspecting the changes.
 
 ### 7.3 Respond to the review
 
-Make the improvement on the same feature branch. Save the file, then run:
+Make the improvement on the same personal work branch. Save the file, then run:
 
 ```bash
 git diff
@@ -562,9 +605,9 @@ After review, another member merges Member 1’s PR on GitHub.
 
 Everyone waits until this is complete.
 
-### 8.2 Member 2: update your feature branch
+### 8.2 Member 2: update your personal work branch
 
-Stay on your feature branch. Start with no uncommitted changes.
+Stay on your personal work branch. Start with no uncommitted changes.
 
 ```bash
 git status
@@ -577,18 +620,18 @@ git push
 
 Explanation:
 
-- `fetch` downloads remote updates.
-- `origin/main` is your local record of remote `main`, refreshed by fetching.
-- `merge` integrates that version into your current branch.
-- `--no-edit` accepts the generated merge message if required.
+- `git fetch origin` downloads information about the latest GitHub changes but does not change your files.
+- `origin/main` means the latest version of the shared `main` branch that Git knows about after fetching.
+- `git merge origin/main --no-edit` brings those shared changes into your current personal work branch.
+- `--no-edit` accepts Git’s automatic merge-commit message if Git needs to create one.
+
+You are updating your own work branch with changes already accepted into `main`. You are not yet putting your work branch into `main`.
 
 ```text
-Merge direction:
+Changes are moving in this direction:
 
-origin/main → feature/programme
+shared main on GitHub → your personal work branch
 ```
-
-This does not merge your feature branch into `main`.
 
 The initial contributions use separate files, so they should combine without a conflict.
 
@@ -599,8 +642,8 @@ The reviewer checks the updated PR and merges it.
 Members 3, 4 and 5 take turns:
 
 1. Wait for the previous PR to be merged.
-2. Fetch the latest changes.
-3. Merge `origin/main` into your feature branch.
+2. Fetch the latest changes from GitHub.
+3. Merge `origin/main` into your personal work branch.
 4. Inspect the result and push.
 5. Obtain review and merge the PR.
 
@@ -698,7 +741,7 @@ The coordinator continues only after all members reach this checkpoint.
 
 ### 9.3 Coordinator: update the shared version
 
-Your personal conflict work has already been committed. Create a separate branch:
+You have already committed your own organiser-line change on your conflict branch. Create a separate branch:
 
 ```bash
 git switch main
@@ -731,7 +774,7 @@ Do not merge the personal conflict PRs yet.
 > [!IMPORTANT]
 > Proceed in member-number order. Each member waits until the previous member’s resolved PR has been reviewed and merged.
 
-### 10.1 Merge the latest shared version
+### 10.1 Bring the latest shared version into your conflict branch
 
 Use your own branch name:
 
@@ -758,6 +801,8 @@ Git should identify `event.md` as an unmerged file.
 
 ### 10.2 Read the conflict markers
 
+Git is asking you to choose the final version because your branch and `main` changed the same line differently. The markers are temporary notes inserted by Git; they must not remain in the finished file.
+
 Member 1 should see something similar to:
 
 ```text
@@ -770,9 +815,9 @@ Organisers: Team coordinator.
 
 | Marker | Meaning in this merge |
 | --- | --- |
-| `<<<<<<< HEAD` | Start of the current branch’s version. |
+| `<<<<<<< HEAD` | Start of the version currently on your conflict branch. |
 | `=======` | Divider between the two versions. |
-| `>>>>>>> origin/main` | End of the incoming version. |
+| `>>>>>>> origin/main` | End of the version coming from the shared `main` branch. |
 
 ### 10.3 Decide the final content
 
@@ -817,7 +862,7 @@ Explanation:
 - Committing completes the merge.
 - Pushing updates the existing PR.
 
-The `--check` option can identify conflict markers and whitespace issues. It cannot determine whether the final content is correct.
+The `--check` option can identify remaining conflict markers and whitespace issues. It cannot determine whether the final content is correct.
 
 ### 10.5 Review and merge
 
@@ -867,11 +912,11 @@ git log --oneline --graph --decorate --all -25
 
 | Option | Purpose |
 | --- | --- |
-| `--oneline` | Show compact commit summaries. |
-| `--graph` | Draw branch and merge relationships using text. |
-| `--decorate` | Show branch and other reference labels. |
-| `--all` | Include history reachable from all local references. |
-| `-25` | Limit the display to 25 commits. |
+| `--oneline` | Show one short line for each commit. |
+| `--graph` | Draw a simple text diagram showing where branches and merges happened. |
+| `--decorate` | Show branch names beside relevant commits. |
+| `--all` | Include commits from all local branches. |
+| `-25` | Show at most 25 commits. |
 
 Find:
 
@@ -886,7 +931,7 @@ Inspect a commit using its actual ID:
 git show COMMIT_ID
 ```
 
-Replace `COMMIT_ID` with an ID from your repository.
+Replace `COMMIT_ID` with a short commit ID from your repository, such as `a1b2c3d`.
 
 Explain to another member:
 
@@ -936,7 +981,7 @@ Update `event.md` to link to the relevant documents. Keep these instructions in 
 - Each member improves a document originally prepared by someone else.
 - Every PR receives useful review feedback.
 - At least two branches are developed at the same time.
-- At least one feature branch incorporates another member’s merged work.
+- At least one personal work branch incorporates another member’s merged work.
 - The group resolves one additional conflict arising from useful, competing edits.
 - The agreed proposal is merged into `main`.
 - Everyone finishes with updated local `main` and no uncommitted changes.
@@ -959,7 +1004,7 @@ Your repository should show:
 - Review comments and responses.
 - Follow-up commits.
 - The additional conflict and its resolution.
-- Shared changes incorporated into an ongoing feature branch.
+- Shared changes incorporated into an ongoing personal work branch.
 
 Use this evidence in your retrospective and demonstration.
 
@@ -977,7 +1022,7 @@ Create `retrospective.md` and submit it through a reviewed PR.
 | Individual contributions | Each member’s PR links, contribution and reviewer. |
 | Review improvement | Original content, feedback and resulting improvement. |
 | Additional conflict | Competing edits, agreed resolution, rationale and evidence. |
-| Branch update | An example of bringing shared changes into a feature branch. |
+| Branch update | An example of bringing shared changes into a personal work branch. |
 | Difficulty and recovery | What happened, what you inspected and how you recovered. |
 | Midpoint requirement | How the rain contingency affected the plan. |
 | Future improvements | Three specific improvements to your group’s workflow. |
@@ -1067,7 +1112,7 @@ The command below updates local `main` only when Git can move it directly forwar
 git pull --ff-only origin main
 ```
 
-A successful fast-forward update does not create a merge commit. Git moves your local branch pointer forward because your local branch has no commits that are missing from the remote branch.
+A successful fast-forward update does not create a merge commit. Git moves your local `main` branch directly forward because it has no commits that are missing from the shared `main` branch on GitHub.
 
 You may see this error:
 
@@ -1075,11 +1120,11 @@ You may see this error:
 fatal: Not possible to fast-forward, aborting.
 ```
 
-This means that your local branch and `origin/main` have diverged. In other words:
+This means that your local `main` branch and `origin/main` have diverged. In other words:
 
-- Your local branch has one or more commits that are not on GitHub.
-- GitHub has one or more commits that are not in your local branch.
-- Git refuses to combine the histories automatically because `--ff-only` permits only a direct forward update.
+- Your local `main` branch has one or more commits that are not on GitHub.
+- GitHub has one or more commits that are not in your local `main` branch.
+- Git refuses to combine the two histories automatically because `--ff-only` permits only a direct forward update.
 
 This is a warning to stop and review the repository state. It helps prevent an unexpected merge commit on `main`.
 
@@ -1101,7 +1146,7 @@ Review the output:
 | Check | What to look for |
 | --- | --- |
 | `git status` | Uncommitted changes or a merge already in progress. |
-| `git branch --show-current` | Confirm whether you are on `main` or a feature branch. |
+| `git branch --show-current` | Confirm whether you are on `main` or a personal work branch. |
 | `git fetch origin` | Download the latest remote information without changing your files. |
 | `git log --oneline --graph --decorate --all -15` | Identify commits that exist only on local `main` or only on `origin/main`. |
 
@@ -1110,7 +1155,7 @@ Review the output:
 | Situation | Likely cause | What to do |
 | --- | --- | --- |
 | You are on `main` and have committed your own work locally. | You accidentally committed directly on `main`. | Preserve the commit by creating a recovery branch. Do not reset or force-push. |
-| You are on a feature branch. | You used the `main` update command on the wrong branch. | Check the branch name. Use `git fetch origin`, then merge `origin/main` into your feature branch when required by the activity. |
+| You are on a personal work branch. | You used the `main` update command on the wrong branch. | Check the branch name. Use `git fetch origin`, then merge `origin/main` into your personal work branch when required by the activity. |
 | The graph shows unfamiliar commits or you cannot explain the history. | A branch may have been merged locally, or the wrong branch may have been used. | Stop and ask your Tutor after recording the command output or taking a screenshot. |
 | There are uncommitted changes. | Work has not yet been committed or safely stored. | Inspect the changes with `git diff` and preserve them before switching branches. |
 
@@ -1122,7 +1167,9 @@ If you confirm that your own commits are on local `main`, create a recovery bran
 git switch -c recovery/my-main-work
 ```
 
-This creates a branch pointing to your current commits so they are preserved. Next, review the graph and ask your Tutor how the work should be moved into the appropriate feature branch.
+This creates a new branch containing your current commits, so your work remains available even after you return to `main`.
+
+Next, review the graph and ask your Tutor how the work should be moved into the appropriate personal work branch.
 
 > [!IMPORTANT]
 > Do not use `git pull --no-ff`, `git pull --rebase`, `git reset --hard` or `git push --force` to bypass the error during this practical unless your Tutor explicitly directs you to do so.
@@ -1136,13 +1183,13 @@ This creates a branch pointing to your current commits so they are preserved. Ne
 | Changes missing on GitHub | Check saving, staging, committing, pushing and the branch displayed on GitHub. |
 | Push rejected | Check access, authentication and whether the remote branch has newer commits. Do not force-push. |
 | `pull --ff-only` refuses | Follow the `git pull --ff-only` troubleshooting section above. |
-| Unexpected files in a PR | Check base, compare and branch history. |
+| Unexpected files in a PR | Check the base branch, compare branch and branch history. |
 | Unresolved conflict | Inspect every unmerged file, agree final content, remove markers, stage and commit. |
 | Sensitive information committed | Stop sharing the material, inform your Tutor immediately and follow your Tutor’s instructions. Do not assume that deleting the file removes it from Git history. |
 
-### Remote feature branch has newer commits
+### Remote personal work branch has newer commits
 
-If someone has pushed commits to the same feature branch, fetch and integrate that matching branch before pushing.
+If someone has pushed commits to the same personal work branch, fetch and integrate that matching branch before pushing.
 
 For example, while on `feature/programme`:
 
@@ -1159,22 +1206,22 @@ Use your actual branch name. This does not fix an authentication or permission e
 
 | Command | Purpose |
 | --- | --- |
-| `git clone URL` | Create a local copy of an existing repository. |
-| `git status` | Inspect your branch and working state. |
-| `git branch --show-current` | Show the current branch. |
-| `git switch main` | Switch to local `main`. |
-| `git switch -c feature/name` | Create and switch to a branch. |
+| `git clone PASTE_THE_HTTPS_URL_COPIED_FROM_GITHUB_HERE` | Create a local copy using the HTTPS URL copied from GitHub. |
+| `git status` | Inspect your current branch and working state. |
+| `git branch --show-current` | Show the name of your current branch. |
+| `git switch main` | Switch to your local `main` branch. |
+| `git switch -c feature/name` | Create and switch to a new personal work branch. |
 | `git diff` | Inspect unstaged changes to tracked files. |
-| `git add FILE` | Stage a file’s changes. |
+| `git add FILE` | Select a file’s changes for the next commit. |
 | `git diff --staged` | Inspect changes selected for the next commit. |
-| `git commit -m "Message"` | Record staged changes locally. |
-| `git push -u origin BRANCH` | Publish a branch and set its upstream. |
-| `git push` | Push to the configured upstream. |
-| `git fetch origin` | Download remote updates without integrating them. |
-| `git pull --ff-only origin main` | Update local `main` if a fast-forward is possible; use while on `main` in this practical. |
-| `git merge origin/main --no-edit` | Integrate fetched remote `main` into your current branch. |
-| `git merge --abort` | Cancel an in-progress merge. |
-| `git log --oneline` | View compact commit history. |
+| `git commit -m "Message"` | Record staged changes in your local repository. |
+| `git push -u origin BRANCH` | Publish a branch on GitHub and remember it as the matching branch for later pushes. |
+| `git push` | Send commits to the matching branch on GitHub. |
+| `git fetch origin` | Download information about GitHub updates without changing your current files. |
+| `git pull --ff-only origin main` | Safely update local `main` if Git can move it directly forward; use while on `main` in this practical. |
+| `git merge origin/main --no-edit` | Bring the latest shared `main` changes into your current personal work branch. |
+| `git merge --abort` | Cancel a merge that is still in progress. |
+| `git log --oneline` | View a compact commit history. |
 | `git show COMMIT_ID` | Inspect a particular commit. |
 
 ***
@@ -1182,7 +1229,7 @@ Use your actual branch name. This does not fix an authentication or permission e
 ## 16. Individual completion checklist
 
 - [ ] I cloned the shared repository.
-- [ ] I created and switched to my own branch.
+- [ ] I created and switched to my own personal work branch.
 - [ ] I inspected changes before committing.
 - [ ] I staged and committed my own work.
 - [ ] I pushed my branch to GitHub.
@@ -1190,7 +1237,7 @@ Use your actual branch name. This does not fix an authentication or permission e
 - [ ] I reviewed another member’s work.
 - [ ] I responded to review feedback.
 - [ ] I updated local `main` after a GitHub merge.
-- [ ] I merged shared changes into a feature branch.
+- [ ] I merged shared changes into a personal work branch.
 - [ ] I personally resolved and committed a conflict.
 - [ ] I can find and explain one of my commits.
 - [ ] I contributed to the independent practice.
