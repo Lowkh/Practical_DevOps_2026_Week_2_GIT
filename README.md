@@ -1,6 +1,3 @@
-Below is the complete updated Markdown document, including the public-repository requirement, tutor collaborator requirement, and educational disclaimer. Public repositories are accessible online, while collaborators must accept invitations before obtaining repository access. [docs.github](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/repository-access-and-collaboration)
-
-```markdown
 # Git and GitHub Team Practical
 
 > A practical introduction to version control and group collaboration for students with no prior Git experience.
@@ -1205,5 +1202,4 @@ The aim is not to memorise every command. Develop the habit of understanding you
 ```text
 Check → Update → Branch → Edit → Inspect → Commit
       → Push → Review → Improve → Merge → Synchronise
-```
 ```
