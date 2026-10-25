@@ -164,7 +164,7 @@ git --version
 
 Expected result: a Git version number.
 
-If the command is not recognised, ask your lecturer or instructor to check your installation.
+If the command is not recognised, ask your Tutor to check your installation.
 
 ### 3.3 Set your commit identity
 
@@ -209,17 +209,17 @@ On GitHub:
 4. Confirm that the default branch is `main`.
 5. Place these instructions in `README.md`, including the **Educational Practice Repository** disclaimer at the top.
 6. Invite your group members through the collaborator settings.
-7. Add your class tutor as a repository collaborator using the GitHub username provided by your tutor.
-8. Confirm that all group members and the tutor have accepted their invitations.
+7. Add your class Tutor as a repository collaborator using the GitHub username provided by your Tutor.
+8. Confirm that all group members and the Tutor have accepted their invitations.
 
 > [!IMPORTANT]
 > This repository must be public. Public repositories are accessible to anyone on the internet, so only fictional and non-sensitive content may be included.
 
 > [!NOTE]
-> To add group members or your tutor as collaborators, open the repository’s **Settings**, select **Collaborators** under **Access**, choose **Add people**, then search for the person’s GitHub username and send the invitation.
+> To add group members or your Tutor as collaborators, open the repository’s **Settings**, select **Collaborators** under **Access**, choose **Add people**, then search for the person’s GitHub username and send the invitation.
 
 > [!NOTE]
-> If your instructor has provided a shared repository, use it instead. Only one shared repository is needed for the group. Confirm that it is public and that the class tutor has collaborator access.
+> If your Tutor has provided a shared repository, use it instead. Only one shared repository is needed for the group. Confirm that it is public and that the Tutor has collaborator access.
 
 ### 4.2 Everyone: clone the repository
 
@@ -262,7 +262,7 @@ If the output opens in a scrolling view, press `q` to exit.
 
 - [ ] The repository visibility is **Public**.
 - [ ] Group members have been invited and have accepted access.
-- [ ] The class tutor has been invited as a collaborator using the GitHub ID provided.
+- [ ] The class Tutor has been invited as a collaborator using the GitHub ID provided.
 - [ ] The educational-practice disclaimer is visible in `README.md`.
 - [ ] I am inside the cloned repository.
 - [ ] My current branch is `main`.
@@ -296,7 +296,7 @@ git switch -c setup/event-files
 | `git pull --ff-only origin main` | Update it from GitHub, provided a fast-forward is possible. |
 | `git switch -c setup/event-files` | Create and switch to the setup branch. |
 
-The `--ff-only` option stops the update if Git cannot move the branch forward without combining different histories. If it refuses, ask your instructor for help.
+The `--ff-only` option stops the update if Git cannot move the branch forward without combining different histories. If it refuses, use the troubleshooting steps in Section 15 to inspect and preserve your work before asking your Tutor for help.
 
 The `/` in the branch name is a naming convention, not a folder.
 
@@ -838,7 +838,7 @@ If you need to cancel a merge that is still in progress:
 git merge --abort
 ```
 
-Resolution edits may be discarded. Ask your instructor if you are unsure.
+Resolution edits may be discarded. Ask your Tutor if you are unsure.
 
 ### Final conflict checkpoint
 
@@ -1006,7 +1006,7 @@ Submit:
 5. Link to the additional conflict-resolution PR.
 6. Any incomplete requirements or outstanding issues.
 
-Make sure your instructor can access the repository.
+Make sure your Tutor can access the repository.
 
 ***
 
@@ -1059,6 +1059,74 @@ More commits or larger PRs do not automatically mean better work. A conflict is 
 4. Confirm what you intended to do.
 5. Preserve your work before making further changes.
 
+### `git pull --ff-only` refuses
+
+The command below updates local `main` only when Git can move it directly forward to match the latest version on GitHub:
+
+```bash
+git pull --ff-only origin main
+```
+
+A successful fast-forward update does not create a merge commit. Git moves your local branch pointer forward because your local branch has no commits that are missing from the remote branch.
+
+You may see this error:
+
+```text
+fatal: Not possible to fast-forward, aborting.
+```
+
+This means that your local branch and `origin/main` have diverged. In other words:
+
+- Your local branch has one or more commits that are not on GitHub.
+- GitHub has one or more commits that are not in your local branch.
+- Git refuses to combine the histories automatically because `--ff-only` permits only a direct forward update.
+
+This is a warning to stop and review the repository state. It helps prevent an unexpected merge commit on `main`.
+
+#### Review the situation
+
+Do not force-push, run `git reset --hard`, delete files or immediately try another pull command.
+
+Run these commands:
+
+```bash
+git status
+git branch --show-current
+git fetch origin
+git log --oneline --graph --decorate --all -15
+```
+
+Review the output:
+
+| Check | What to look for |
+| --- | --- |
+| `git status` | Uncommitted changes or a merge already in progress. |
+| `git branch --show-current` | Confirm whether you are on `main` or a feature branch. |
+| `git fetch origin` | Download the latest remote information without changing your files. |
+| `git log --oneline --graph --decorate --all -15` | Identify commits that exist only on local `main` or only on `origin/main`. |
+
+#### Decide what happened
+
+| Situation | Likely cause | What to do |
+| --- | --- | --- |
+| You are on `main` and have committed your own work locally. | You accidentally committed directly on `main`. | Preserve the commit by creating a recovery branch. Do not reset or force-push. |
+| You are on a feature branch. | You used the `main` update command on the wrong branch. | Check the branch name. Use `git fetch origin`, then merge `origin/main` into your feature branch when required by the activity. |
+| The graph shows unfamiliar commits or you cannot explain the history. | A branch may have been merged locally, or the wrong branch may have been used. | Stop and ask your Tutor after recording the command output or taking a screenshot. |
+| There are uncommitted changes. | Work has not yet been committed or safely stored. | Inspect the changes with `git diff` and preserve them before switching branches. |
+
+#### Preserve accidental work on `main`
+
+If you confirm that your own commits are on local `main`, create a recovery branch before taking any further action:
+
+```bash
+git switch -c recovery/my-main-work
+```
+
+This creates a branch pointing to your current commits so they are preserved. Next, review the graph and ask your Tutor how the work should be moved into the appropriate feature branch.
+
+> [!IMPORTANT]
+> Do not use `git pull --no-ff`, `git pull --rebase`, `git reset --hard` or `git push --force` to bypass the error during this practical unless your Tutor explicitly directs you to do so.
+
 ### Common problems
 
 | Problem | What to check first |
@@ -1067,10 +1135,10 @@ More commits or larger PRs do not automatically mean better work. A conflict is 
 | Local changes would be overwritten | Inspect `git status` and `git diff`. Preserve your work before continuing. |
 | Changes missing on GitHub | Check saving, staging, committing, pushing and the branch displayed on GitHub. |
 | Push rejected | Check access, authentication and whether the remote branch has newer commits. Do not force-push. |
-| `pull --ff-only` refuses | Inspect history and ask for help. Preserve local commits. |
+| `pull --ff-only` refuses | Follow the `git pull --ff-only` troubleshooting section above. |
 | Unexpected files in a PR | Check base, compare and branch history. |
 | Unresolved conflict | Inspect every unmerged file, agree final content, remove markers, stage and commit. |
-| Sensitive information committed | Stop sharing the material, inform the tutor immediately and follow the tutor’s instructions. Do not assume that deleting the file removes it from Git history. |
+| Sensitive information committed | Stop sharing the material, inform your Tutor immediately and follow your Tutor’s instructions. Do not assume that deleting the file removes it from Git history. |
 
 ### Remote feature branch has newer commits
 
