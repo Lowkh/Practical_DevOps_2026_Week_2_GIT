@@ -1,6 +1,6 @@
 # Git and GitHub Team Practical
 
-> A practical introduction to version control and group collaboration for students with no prior Git experience.
+> A guided, hands-on introduction to version control and group collaboration for students with no prior Git experience.
 
 > [!NOTE]
 > ## Educational Practice Repository
@@ -11,17 +11,19 @@
 >
 > Do not include confidential, personal, sensitive, commercially sensitive or copyrighted material in this repository. This includes passwords, access tokens, API keys, identification numbers, personal contact details and private photographs.
 
-Work in groups to prepare an event proposal for **Campus Connect**. Along the way, you will learn to record changes, share your work, review contributions and resolve conflicts.
+This in-class practical helps you learn Git and GitHub by using them. You will work in a small group to prepare a simple fictional event proposal for **Campus Connect**.
+
+The focus is on understanding the workflow through practice: creating branches, recording changes, sharing work, reviewing contributions, merging changes and resolving conflicts.
 
 No programming experience is required. You will work with Markdown files: plain-text documents that use simple symbols for headings, lists and tables.
 
 | Item | Details |
 | --- | --- |
 | Group size | 4–5 students |
-| Guided activities | Approximately 3–4 hours |
-| Independent practice | Approximately 1–2 hours |
+| Guided in-class duration | Approximately 2.5 hours |
 | Required tools | Git, GitHub, a terminal and a text editor |
-| Final deliverables | Event proposal, contribution evidence and group retrospective |
+| Practical outcome | A shared fictional event proposal and hands-on evidence of Git collaboration |
+| Focus | Learning and practising Git workflows, not producing a polished event proposal |
 
 ## Contents
 
@@ -36,12 +38,10 @@ No programming experience is required. You will work with Markdown files: plain-
 9. [Set up a merge conflict](#9-set-up-a-merge-conflict)
 10. [Resolve the conflict](#10-resolve-the-conflict)
 11. [Inspect your Git history](#11-inspect-your-git-history)
-12. [Independent group practice](#12-independent-group-practice)
-13. [Retrospective and submission](#13-retrospective-and-submission)
-14. [Demonstration and assessment](#14-demonstration-and-assessment)
-15. [Troubleshooting and command reference](#15-troubleshooting-and-command-reference)
-16. [Individual completion checklist](#16-individual-completion-checklist)
-17. [Optional extension activities](#17-optional-extension-activities)
+12. [Guided reflection and completion](#12-guided-reflection-and-completion)
+13. [Troubleshooting and command reference](#13-troubleshooting-and-command-reference)
+14. [Individual completion checklist](#14-individual-completion-checklist)
+15. [Optional extension activities — outside the in-class practical](#15-optional-extension-activities--outside-the-in-class-practical)
 
 ***
 
@@ -329,7 +329,7 @@ git switch -c setup/event-files
 | `git pull --ff-only origin main` | Safely update local `main` from GitHub. Git stops instead of combining histories if it finds unexpected local commits. |
 | `git switch -c setup/event-files` | Create and switch to the setup branch. |
 
-The `--ff-only` option stops the update if Git cannot move the local branch directly forward to match GitHub without combining different histories. If it refuses, use the troubleshooting steps in Section 15 to inspect and preserve your work before asking your Tutor for help.
+The `--ff-only` option stops the update if Git cannot move the local branch directly forward to match GitHub without combining different histories. If it refuses, use the troubleshooting steps in Section 13 to inspect and preserve your work before asking your Tutor for help.
 
 The `/` in the branch name is a naming convention, not a folder.
 
@@ -364,7 +364,7 @@ Save the file.
 # Team
 
 | Member | Name | GitHub username | Responsibility |
-| --- | --- | --- | ---|
+| --- | --- | --- | --- |
 | 1 | Name | Username | Overview |
 | 2 | Name | Username | Programme |
 | 3 | Name | Username | Publicity |
@@ -941,160 +941,34 @@ Explain to another member:
 
 ***
 
-## 12. Independent group practice
+## 12. Guided reflection and completion
 
-Your group now decides how to organise the work. No command sequence or branch plan is provided.
+Create `retrospective.md` through a reviewed pull request.
 
-### Scenario
+Keep your reflection short and specific:
 
-The organising committee has accepted your initial proposal but now requires:
+- One Git task you can now complete independently.
+- One useful review comment you gave or received.
+- One improvement made after feedback.
+- One conflict you resolved and how you decided the final content.
+- One Git skill you would like to practise further.
 
-- A half-day event for 120 students.
-- A replacement venue because the original venue is unavailable.
-- Accessible and inclusive arrangements.
-- Environmentally responsible planning.
-- A total budget not exceeding SGD 800.
+### Final practical checklist
 
-Your documents must form one consistent proposal.
-
-### Required outcome
-
-Address:
-
-- Purpose and target audience.
-- Programme.
-- Replacement venue and assumptions.
-- Logistics for 120 students.
-- Accessibility and inclusion.
-- Environmental arrangements.
-- Budget.
-- Publicity and registration.
-- Risks and contingency arrangements.
-
-Clearly labelled estimates are acceptable. You do not need to obtain quotations or make bookings.
-
-Update `event.md` to link to the relevant documents. Keep these instructions in `README.md`.
-
-### Collaboration requirements
-
-- Each member contributes at least two PRs during this activity.
-- Each member improves a document originally prepared by someone else.
-- Every PR receives useful review feedback.
-- At least two branches are developed at the same time.
-- At least one personal work branch incorporates another member’s merged work.
-- The group resolves one additional conflict arising from useful, competing edits.
-- The agreed proposal is merged into `main`.
-- Everyone finishes with updated local `main` and no uncommitted changes.
-
-Do not make meaningless changes just to create a conflict.
-
-### Midpoint change request
-
-After the first round of revised PRs is merged:
-
-> The event must be able to continue indoors if it rains. The budget remains SGD 800, and attendance remains 120 students.
-
-Decide which documents need to change and coordinate the revisions.
-
-### Evidence to retain
-
-Your repository should show:
-
-- Each member’s contributions.
-- Review comments and responses.
-- Follow-up commits.
-- The additional conflict and its resolution.
-- Shared changes incorporated into an ongoing personal work branch.
-
-Use this evidence in your retrospective and demonstration.
+- [ ] Everyone created and used a personal work branch.
+- [ ] Everyone created a commit and pushed work to GitHub.
+- [ ] Everyone created a pull request.
+- [ ] Everyone reviewed another member’s pull request.
+- [ ] Everyone made an improvement after review feedback.
+- [ ] Everyone personally resolved a merge conflict.
+- [ ] The group’s `main` branch contains the agreed files.
+- [ ] Everyone updated their local `main` branch.
+- [ ] Everyone’s working directory is clean.
+- [ ] No confidential or sensitive information is present.
 
 ***
 
-## 13. Retrospective and submission
-
-Create `retrospective.md` and submit it through a reviewed PR.
-
-### Retrospective requirements
-
-| Section | What to include |
-| --- | --- |
-| Group workflow | How you divided work, used branches, reviewed changes and merged PRs. |
-| Individual contributions | Each member’s PR links, contribution and reviewer. |
-| Review improvement | Original content, feedback and resulting improvement. |
-| Additional conflict | Competing edits, agreed resolution, rationale and evidence. |
-| Branch update | An example of bringing shared changes into a personal work branch. |
-| Difficulty and recovery | What happened, what you inspected and how you recovered. |
-| Midpoint requirement | How the rain contingency affected the plan. |
-| Future improvements | Three specific improvements to your group’s workflow. |
-| Individual reflection | A task completed independently and a skill to practise further. |
-
-### Final group checklist
-
-- [ ] All required planning areas are covered.
-- [ ] Figures and decisions are consistent across documents.
-- [ ] Attendance, budget and rain-contingency requirements are met.
-- [ ] Every member has the required PR and review evidence.
-- [ ] No conflict markers remain.
-- [ ] No passwords, access tokens, personal contact details or sensitive information are included.
-- [ ] All proposal content is fictional and suitable for a public repository.
-- [ ] Final changes and the retrospective have been merged.
-- [ ] Everyone’s local `main` is updated and clean.
-
-### Submission requirements
-
-Submit:
-
-1. Shared repository address.
-2. Member names and GitHub usernames.
-3. Link to final `event.md`.
-4. Link to `retrospective.md`.
-5. Link to the additional conflict-resolution PR.
-6. Any incomplete requirements or outstanding issues.
-
-Make sure your Tutor can access the repository.
-
-***
-
-## 14. Demonstration and assessment
-
-Prepare an 8–10 minute group demonstration. Every member must explain and show some of their own work.
-
-| Segment | Suggested duration |
-| --- | --- |
-| Final event plan | 1 minute |
-| Individual contributions | 3 minutes |
-| Improvement following review | 1 minute |
-| Conflict and resolution | 2 minutes |
-| Difficulty, recovery and reflection | 1–2 minutes |
-
-Show how the work developed, not just the final documents.
-
-Include:
-
-- PR descriptions.
-- Changed files.
-- Review comments.
-- Follow-up commits.
-- Conflict-resolution evidence.
-- Current branch and local working state.
-
-### Assessment criteria
-
-| Criterion | Weight |
-| --- | --- |
-| Individual Git participation | 20% |
-| Pull requests and review | 20% |
-| Merging and conflict resolution | 20% |
-| Independent practice outcome | 20% |
-| Evidence and reflection | 10% |
-| Individual understanding | 10% |
-| Total | 100% |
-
-More commits or larger PRs do not automatically mean better work. A conflict is not a failure; what matters is how you resolve it.
-
-***
-
-## 15. Troubleshooting and command reference
+## 13. Troubleshooting and command reference
 
 ### Before attempting a fix
 
@@ -1226,7 +1100,7 @@ Use your actual branch name. This does not fix an authentication or permission e
 
 ***
 
-## 16. Individual completion checklist
+## 14. Individual completion checklist
 
 - [ ] I cloned the shared repository.
 - [ ] I created and switched to my own personal work branch.
@@ -1240,24 +1114,18 @@ Use your actual branch name. This does not fix an authentication or permission e
 - [ ] I merged shared changes into a personal work branch.
 - [ ] I personally resolved and committed a conflict.
 - [ ] I can find and explain one of my commits.
-- [ ] I contributed to the independent practice.
 - [ ] I confirmed that I did not commit confidential, personal or sensitive information.
 - [ ] My local `main` is updated and my working directory is clean.
 
-### Individual reflection
-
-Include your responses in `retrospective.md`:
-
-1. What task can you now complete on your own?
-2. What useful feedback did you receive or provide?
-3. What mistake did you learn from?
-4. Which Git skill would you like to practise further?
-
 ***
 
-## 17. Optional extension activities
+## 15. Optional extension activities — outside the in-class practical
 
-Attempt these after completing the required work.
+The activities in this section are **not required** for the 2.5-hour guided in-class practical.
+
+Students are encouraged to attempt them independently, outside class, if they have the interest, time and bandwidth. They provide additional hands-on practice with branches, pull requests, reviews, merging and conflict resolution.
+
+Choose one or more activities after completing the required practical.
 
 ### A. Improve the handover
 
