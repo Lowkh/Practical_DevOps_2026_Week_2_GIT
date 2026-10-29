@@ -1,13 +1,10 @@
 # Programme
+Crafted a plan
 
 ## Proposed activities
 
-- Eat.
-- Sleep.
-- Repeat.
+- Gather all the necessities for the events
 
 ## Questions for discussion
 
-- When can I sleep?
-- When can I go home?
-- AHHHHHHHHHHHHHHH
+- Whether the stuffs is suitable for the events
