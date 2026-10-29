@@ -2,8 +2,8 @@
 
 ## Approved Budget
 $1000 for this event.
-- $3 for food
-- $995 for claude tokens
+- $1 for food
+- $997 for claude tokens
 - $2 for general expenses
 
 ## Questions for discussion
